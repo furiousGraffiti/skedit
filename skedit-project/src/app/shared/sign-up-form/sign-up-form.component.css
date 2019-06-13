@@ -1,0 +1,39 @@
+.sharedComponent{
+  height: 100%;
+  width: 100%;
+  padding: 50px 30px;
+  background: linear-gradient(white, #ededed);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sharedComponent__title{
+  width: 100%;
+  text-align: center;
+}
+
+.sharedComponent__inputs{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+input{
+  background: transparent;
+  border: none;
+  border-bottom: #cacaca 1px solid;
+  width: 100%;
+}
+
+label{
+  margin: 0px 0px 20px;
+  width: 100%;
+  color: #626262;
+}
+
+.button--fullWidth{
+  width: 100%;
+  margin: 0px;
+}

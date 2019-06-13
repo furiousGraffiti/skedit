@@ -1,0 +1,7 @@
+.router{
+    /*
+    footer's height: 65px;
+    header's height: 100px;
+  */
+  height: calc(100% - 165px);
+}

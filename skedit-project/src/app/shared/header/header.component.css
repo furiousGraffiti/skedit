@@ -1,0 +1,23 @@
+.sharedComponent{
+  width: 100%;
+  padding: 20px 100px;
+}
+
+.sharedComponent__header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__img{
+  height: 60px;
+}
+
+.header__nav{
+  display: flex;
+  justify-content: space-around;
+}
+
+.home-link:hover{
+  cursor: pointer;
+}

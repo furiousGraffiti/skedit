@@ -1,0 +1,33 @@
+.component__main{
+  width: 100%;
+  height: 100%;
+}
+
+.component__main--centerContent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.component__main--groupContent{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.main__description{
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main__description span{
+  margin-top: 15px;
+}
+
+.main__form{
+  width: 500px;
+  height: 500px;
+  background: gray;
+}
