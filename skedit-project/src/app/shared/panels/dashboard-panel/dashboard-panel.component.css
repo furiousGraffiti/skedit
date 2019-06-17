@@ -1,0 +1,9 @@
+.sharedComponent{
+  height: 100%;
+  width: 100%;
+  padding: 50px 30px;
+  background: linear-gradient(white, #ededed);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

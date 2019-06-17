@@ -1,3 +1,6 @@
+import { TaskService } from './../task.service';
+import { Task } from './../shared/models/task.model';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  tasks: Task[] = [];
+
+  constructor(private taskService: TaskService) {}
 
   ngOnInit() {
+    this.getTasks();
+
+  }
+
+  getTasks(): void {
+    this.taskService.getTasks()
+      .subscribe(tasks => this.tasks = tasks);
   }
 
 }

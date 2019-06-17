@@ -1,0 +1,9 @@
+<div class='sharedComponent'>
+  <div class='sharedComponent__header'>
+    <div class='button'> Skip </div>
+    <div class='header__currentTaskTitle'> Current task {{currentTask?.title}} should be finished in (time) minutes</div>
+  </div>
+  <div class='sharedComponent__today'> It's {{today | date:'hh:mm a, EEEE, d MMMM y'}} </div>
+  <div class='sharedComponent__nextTaskTitle'> The next task is {{nextTask?.title}} at (time) </div>
+  <div class='sharedComponent__furtherTasks'> <a *ngFor='let task of furtherTasks'>{{task}}</a> </div>
+</div>
