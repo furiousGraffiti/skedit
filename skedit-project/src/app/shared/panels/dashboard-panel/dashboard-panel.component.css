@@ -1,9 +1,65 @@
 .sharedComponent{
-  height: 100%;
   width: 100%;
   padding: 50px 30px;
   background: linear-gradient(white, #ededed);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+}
+
+.sharedMargin{
+  margin: 0px 100px;
+}
+
+.sharedComponent__header{
+  height: 60px;
+  width: 100%;
+  display: flex;
+}
+
+.header__button{
+  width: 100px;
+  height: 100%;
+  display: flex;
+}
+
+.header__currentTaskTitle{
+  height: 100%;
+  width: calc(100% - 100px);
+  display: flex;
+  align-items: center;
+}
+
+.sharedComponent__today{
+  width: 100%;
+  padding: 30px 0px 50px;
+}
+
+.sharedComponent__nextTaskTitle{
+  width: 100%;
+}
+
+.sharedComponent__furtherTasks{
+  color: #9e9e9e;
+}
+
+.sharedComponent__button{
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.regularFont--colour{
+  color: darkred;
+}
+
+.mediumFont--colour{
+  color: lightgreen;
+}
+
+.span--smallMargin{
+  margin: 0px 7px;
+}
+
+.normalFont--bold{
+  font-weight: bold;
 }

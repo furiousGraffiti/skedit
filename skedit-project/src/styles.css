@@ -38,8 +38,12 @@ body{
   color: black;
 }
 
+.bigFont--thin{
+  font-weight: 200;
+}
+
 .bigFont--bold{
-  font-weight: 700;
+  font-weight: bold;
 }
 
 .bigFont--gray{
@@ -48,7 +52,11 @@ body{
 
 .mediumFont{
   font-size: 24px;
-  font-weight: 300;
+  font-weight: normal;
+}
+
+.mediumFont--bold{
+  font-weight: bold;
 }
 
 .regularFont{
@@ -57,7 +65,7 @@ body{
 }
 
 .regularFont--bold{
-  font-weight: 700;
+  font-weight: bold;
 }
 
 .regularFont--darkGray{
@@ -65,5 +73,5 @@ body{
 }
 
 .regularFont--thin{
-  font-weight: 300;
+  font-weight: 200;
 }
