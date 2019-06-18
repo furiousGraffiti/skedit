@@ -3,6 +3,6 @@ export class Task {
   owner: string;
   title: string;
   description: string;
-  when: string;
+  when: Date;
   priority: number;
 }

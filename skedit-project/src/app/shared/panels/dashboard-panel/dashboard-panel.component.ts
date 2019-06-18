@@ -10,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPanelComponent implements OnInit {
   date = Date.now();
+  timeLeft: number;
   allTasks: Array<Task>;
-  timer: string;
+  whenExpires: Date = this.allTasks[0].when;
 
   constructor(
     private taskService: TaskService,
@@ -20,11 +21,13 @@ export class DashboardPanelComponent implements OnInit {
 
   ngOnInit() {
     this.getTasks();
-    this.currentTaskTimer();
+    this.getTimeLeft();
   }
 
-  currentTaskTimer(): void {
-    this.timeService.currentTaskTimer().subscribe(timer => this.timer = timer);
+  getTimeLeft(): void {
+    this.whenExpires.setHours(5);
+    this.whenExpires.setMinutes(50);
+    this.timeService.getTimeLeft(this.whenExpires).subscribe((t) => this.timeLeft = t);
   }
 
   getTasks(): void {
