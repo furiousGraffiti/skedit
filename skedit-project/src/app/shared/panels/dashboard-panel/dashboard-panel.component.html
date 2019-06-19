@@ -1,18 +1,24 @@
-<div class='sharedComponent'>
+<div class='sharedComponent' *ngIf='allTasks'>
   <div class='sharedComponent__header'>
     <div class='header__button'>
       <div class='button'> Skip </div>
     </div>
-    <div class='header__currentTaskTitle mediumFont'>
-      Current task <a class='mediumFont mediumFont--bold mediumFont--colour span--smallMargin'> {{allTasks[0].title}} </a> should be finished until {{timeLeft}} </div>
+    <div class='header__currentTaskTitle mediumFont' >
+      Current task
+      <span class='mediumFont mediumFont--bold mediumFont--colour span--smallMargin'>
+        {{cutTasks[0]?.title}}
+      </span> should be finished in {{taskExpiresIn_string}}
+    </div>
   </div>
-  <div class='sharedMargin sharedComponent__today bigFont bigFont--thin'> {{date | date:'EEEE, d MMMM y'}} </div>
+  <div class='sharedMargin sharedComponent__today bigFont bigFont--thin'>
+    {{todayIs | date:'EEEE, d MMMM y'}}
+  </div>
   <div class='sharedMargin sharedComponent__nextTaskTitle regularFont regularFont--bold'>
-    The next task is <span class='regularFont--colour'> {{allTasks[1].title}} </span> at {{allTasks[1].when}}
+    The next task is <span class='regularFont--colour'> {{cutTasks[1]?.title}} </span> at {{cutTasks[1]?.when}}
   </div>
   <div class='sharedMargin sharedComponent__furtherTasks'>
-    <div class='furtherTask__task' *ngFor='let task of allTasks | slice:2'>
-      <span class='normalFont normalFont--bold'> {{task.when}} </span> {{task.title}}
+    <div class='furtherTask__task' *ngFor='let task of getCutTasks()'>
+      <span class='normalFont normalFont--bold'> {{task.when}} {{task.title}} </span>
     </div>
   </div>
   <div class='sharedComponent__button'>

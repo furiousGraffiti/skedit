@@ -1,8 +1,11 @@
+import { TaskTime } from './taskTime.model';
+
 export class Task {
   id: number;
   owner: string;
   title: string;
   description: string;
-  when: Date;
+  whenStarts: TaskTime;
+  duration: TaskTime;
   priority: number;
 }
