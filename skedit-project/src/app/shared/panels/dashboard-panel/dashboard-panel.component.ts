@@ -49,23 +49,20 @@ export class DashboardPanelComponent implements OnInit {
     this.taskService.getTasks().subscribe(allTasks => {
       this.allTasks = allTasks;
       this.afterGettingTasks();
+      for (let i = 0; i < this.allTasks.length; i++) {
+        this.cutTasks.push({title: this.allTasks[i].title,
+           when: this.taskTimeService.convertTaskTimeToString(this.allTasks[i].whenStarts, true)});
+      }
     });
   }
 
-  getCutTasks(): CutTask[] {
-    const cutTasks = new Array<CutTask>();
-    for (let i = 0; i < this.allTasks.length; i++) {
-      cutTasks.push({title: this.allTasks[i].title, when: this.taskTimeService.convertTaskTimeToString(this.allTasks[i].whenStarts, true)});
-    }
-    return cutTasks;
-  }
-
-  afterGettingTasks() {
+  afterGettingTasks(): void {
+    console.log('afterGettingTasks() works');
     this.displayCurrentTaskTimer();
-    this.cutTasks = this.getCutTasks();
   }
 
   ngOnDestroy() {
+    console.log('ngOnDestroy() works');
     this.timer.unsubscribe();
   }
 }

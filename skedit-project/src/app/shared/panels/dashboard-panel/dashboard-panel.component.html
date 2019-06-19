@@ -1,4 +1,4 @@
-<div class='sharedComponent' *ngIf='allTasks'>
+<div class='sharedComponent' *ngIf='cutTasks'>
   <div class='sharedComponent__header'>
     <div class='header__button'>
       <div class='button'> Skip </div>
@@ -17,7 +17,7 @@
     The next task is <span class='regularFont--colour'> {{cutTasks[1]?.title}} </span> at {{cutTasks[1]?.when}}
   </div>
   <div class='sharedMargin sharedComponent__furtherTasks'>
-    <div class='furtherTask__task' *ngFor='let task of getCutTasks()'>
+    <div class='furtherTask__task' *ngFor='let task of cutTasks'>
       <span class='normalFont normalFont--bold'> {{task.when}} {{task.title}} </span>
     </div>
   </div>
