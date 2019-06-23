@@ -1,23 +1,23 @@
-<div class='sharedComponent' *ngIf='cutTasks'>
+<div class='sharedComponent'>
   <div class='sharedComponent__header'>
     <div class='header__button'>
-      <div class='button'> Skip </div>
+      <div class='button' (click)='skipCurrentTask()' *ngIf='!noTasksLeft'> Skip </div>
     </div>
-    <div class='header__currentTaskTitle mediumFont' >
+    <div class='header__currentTaskTitle mediumFont' *ngIf='!noTasksLeft'>
       Current task
       <span class='mediumFont mediumFont--bold mediumFont--colour span--smallMargin'>
-        {{cutTasks[0]?.title}}
-      </span> should be finished in {{taskExpiresIn_string}}
+        {{tasks[currentTaskIndex]?.title}}
+      </span> should be finished in {{currentTaskTimeLeft_str}} at {{whenCurrentTaskIsCompleted_str}}
     </div>
   </div>
   <div class='sharedMargin sharedComponent__today bigFont bigFont--thin'>
-    {{todayIs | date:'EEEE, d MMMM y'}}
+    {{currentDate | date:'EEEE, d MMMM y'}}
   </div>
-  <div class='sharedMargin sharedComponent__nextTaskTitle regularFont regularFont--bold'>
-    The next task is <span class='regularFont--colour'> {{cutTasks[1]?.title}} </span> at {{cutTasks[1]?.when}}
+  <div class='sharedMargin sharedComponent__nextTaskTitle regularFont regularFont--bold' *ngIf='currentTaskIndex < tasks.length - 2'>
+    The next task is <span class='regularFont--colour'> {{truncatedTasksInfo[currentTaskIndex + 1]?.title}} </span> at {{truncatedTasksInfo[currentTaskIndex + 1]?.when}}
   </div>
   <div class='sharedMargin sharedComponent__furtherTasks'>
-    <div class='furtherTask__task' *ngFor='let task of cutTasks'>
+    <div class='furtherTask__task' *ngFor='let task of truncatedTasksInfo | slice: howManyTasksHidden'>
       <span class='normalFont normalFont--bold'> {{task.when}} {{task.title}} </span>
     </div>
   </div>

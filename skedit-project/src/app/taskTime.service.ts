@@ -1,5 +1,4 @@
 import { TaskTime } from './shared/models/taskTime.model';
-import { Observable, of, from, observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -9,45 +8,52 @@ export class TaskTimeService {
 
   constructor() { }
 
-  convertTaskTimeToString(taskTime: TaskTime, makeEng: boolean = false): string {
+  convertSecondsToString(getSeconds: number, displaySeconds: string = '', timeSystem: string = ''): string {
+    //    console.log('convertTaskTimeToString() works');
+
     let string = '';
-    let pm = false;
-    if (makeEng && (taskTime.hours > 12)) {
-      taskTime.hours -= 12;
-      console.log('pm before: ' + pm + ' ' + taskTime.hours);
+    let pm: boolean;
+    let hours: number = (getSeconds / 3600 << 0);
+    const minutes: number = (getSeconds / 60 << 0) - hours * 60;
+    const seconds: number = getSeconds - (hours * 3600) - (minutes * 60);
+
+    if (timeSystem === '12h-system' && (hours > 12)) {
+      hours -= 12;
       pm = true;
-      console.log('pm after: ' + pm + ' ' + taskTime.hours);
     }
-    console.log('pm after_after: ' + pm + ' ' + taskTime.hours);
-    if (taskTime.hours < 10) {
-      string += '0' + taskTime.hours;
+    if (hours < 10 && hours >= 0) {
+      string += '0' + hours;
     } else {
-      string += taskTime.hours;
+      string += hours;
     }
     string += ':';
-    if (taskTime.minutes < 10) {
-      string += '0' + taskTime.minutes;
+    if (minutes < 10 && minutes >= 0) {
+      string += '0' + minutes;
     } else {
-      string += taskTime.minutes;
+      string += minutes;
     }
-    if (makeEng) {
-      if (pm) {
-        string += 'pm';
+    if (displaySeconds === 'displaySeconds') {
+      string += ':';
+      if (seconds < 10 && seconds >= 0) {
+        string += '0' + seconds;
       } else {
-        string += 'am';
+        string += seconds;
       }
     }
+    if (timeSystem === '12h-system') {
+      string += ' pm';
+    } else {
+      string += ' am';
+    }
+
     return string;
   }
 
-  convertTaskTimeToSeconds(taskTime: TaskTime): number {
-    console.log(taskTime.hours * 3600 + taskTime.minutes * 60);
-    return taskTime.hours * 3600 + taskTime.minutes * 60;
-  }
-
-  convertSecondsToString(getSeconds: number): string {
-    const hours: number = (getSeconds / 3600 << 0);
-    const minutes: number = (getSeconds / 60 << 0) - hours * 60;
-    return hours + ':' + minutes + ' h';
+  getCurrentTime_sec(): number {
+    //    console.log('getCurrentTime_sec() works');
+    let date = new Date();
+    //    console.log('getCurrentTime_sec(): ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+    //    console.log('getCurrentTime_sec(): returns ' + (date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds()));
+    return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
   }
 }

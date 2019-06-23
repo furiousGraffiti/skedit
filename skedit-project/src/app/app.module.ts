@@ -20,6 +20,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { ComposerPanelComponent } from './shared/panels/composer-panel/composer-panel.component';
+import { ComposerComponent } from './composer/composer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { InMemoryDataService } from './in-memory-data.service';
     SignInFormComponent,
     SignUpFormComponent,
     HeaderComponent,
-    DashboardPanelComponent
+    DashboardPanelComponent,
+    ComposerPanelComponent,
+    ComposerComponent
   ],
   imports: [
     BrowserModule,
